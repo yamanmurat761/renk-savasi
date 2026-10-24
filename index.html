@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Renk Savaşı</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ana menü -->
+  <section id="menu" class="screen active">
+    <div class="card">
+      <h1>Renk <span>Savaşı</span></h1>
+      <p class="sub">4 kişilik çevrimiçi alan kapma oyunu. Haritayı en çok kendi rengine boyayan kazanır!</p>
+      <label>Adın
+        <input id="nameInput" maxlength="12" placeholder="Oyuncu" autocomplete="off">
+      </label>
+      <button id="createBtn" class="primary">Oda Kur</button>
+      <div class="or">ya da</div>
+      <div class="row">
+        <input id="codeInput" maxlength="4" placeholder="ODA KODU" autocomplete="off">
+        <button id="joinBtn">Katıl</button>
+      </div>
+      <p id="menuMsg" class="msg"></p>
+      <details>
+        <summary>Nasıl oynanır?</summary>
+        <ul>
+          <li><b>WASD</b> / <b>yön tuşları</b> ile hareket et (telefonda ekrandaki tuşlar).</li>
+          <li>Üzerinden geçtiğin kareler senin rengine boyanır.</li>
+          <li>⚡ hız verir, 💣 etrafını bir anda boyar.</li>
+          <li>90 saniye sonunda en çok kareye sahip olan kazanır.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- Lobi -->
+  <section id="lobby" class="screen">
+    <div class="card">
+      <h2>Lobi</h2>
+      <p class="sub">Oda kodu: <b id="roomCode" class="code">----</b>
+        <button id="copyBtn" class="small">Bağlantıyı kopyala</button></p>
+      <ul id="playerList" class="players"></ul>
+      <div id="hostControls">
+        <button id="addBotBtn">+ Bot ekle</button>
+        <button id="startBtn" class="primary">Oyunu Başlat</button>
+      </div>
+      <p id="lobbyMsg" class="msg">Oyuncular bekleniyor...</p>
+      <button id="leaveBtn" class="small ghost">Ayrıl</button>
+    </div>
+  </section>
+
+  <!-- Oyun -->
+  <section id="game" class="screen">
+    <div id="hud">
+      <div id="scores"></div>
+      <div id="timer">90</div>
+    </div>
+    <div id="stage"><canvas id="canvas"></canvas></div>
+    <div id="pad">
+      <button data-k="up">▲</button>
+      <button data-k="left">◀</button>
+      <button data-k="down">▼</button>
+      <button data-k="right">▶</button>
+    </div>
+    <div id="endOverlay" class="overlay hidden">
+      <div class="card">
+        <h2 id="winnerText">Kazanan</h2>
+        <ol id="finalScores" class="players"></ol>
+        <button id="againBtn" class="primary">Tekrar Oyna</button>
+        <p id="waitHostMsg" class="msg">Kurucunun yeni oyunu başlatması bekleniyor...</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
