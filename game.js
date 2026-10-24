@@ -321,6 +321,7 @@ function handleMessage(msg) {
     case 'lobby':
       myIndex = msg.you;
       roomCode = msg.code;
+      setMsg('menuMsg', '');
       $('endOverlay').classList.add('hidden');
       enterLobby();
       renderLobby(msg.players);
